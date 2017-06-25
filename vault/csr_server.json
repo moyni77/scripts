@@ -1,0 +1,8 @@
+{
+  "common_name": "vm-worker0",
+  "alt_names": "localhost,vm-worker0,vm-worker0.cloudra.local",
+  "ip_sans": "127.0.0.1,10.7.0.4",
+  "use_csr_common_name": "true",
+  "exclude_cn_from_sans": "true",
+  "ttl": "8760h"
+}
