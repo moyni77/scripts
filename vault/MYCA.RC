@@ -6,7 +6,7 @@ ROOTCA="rootca"
 years=10
 ROOTCA_TTL=$((24*365*${years}))h
 ROOTCA_DESC="Christophe Lehy Root CA valid ${years} years"
-ROOTCA_ENDPOINT=https://10.7.0.4:8200/v1/${ROOTCA}
+ROOTCA_ENDPOINT=https://vault.cloudra.local:8200/v1/${ROOTCA}
 
 #
 # MY CA Intermediate details
@@ -15,7 +15,7 @@ INTCA="intca"
 years=3
 INTCA_TTL="$((24*365*${years}))h"
 INTCA_DESC="Christophe Lehy Intermediate CA valid ${years} years"
-INTCA_ENDPOINT=https://10.7.0.4:8200/v1/${INTCA}
+INTCA_ENDPOINT=https://vault.cloudra.local:8200/v1/${INTCA}
 
 #
 # Roles

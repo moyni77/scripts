@@ -1,7 +1,0 @@
-export uKey1="Narx+5xXxLE3UR5HQxc0n7mZzGfL91ARvE9HkwQsRlxM"
-export uKey2="rEiPYLRhPh6WxGgY7ykxcLxPMLaYl3LewyziUIiMCRn1"
-export uKey3="ee85sezFomLYDxlJsVuFzDJKD9/noYKFwB5TAEvS4nvR"
-export uKey4="b1zRDloPvQledJBP9ITpvVgBeKNLY2hYlzcc6UKieQ9p"
-export uKey5="7RIzTkJkKW1BdJqQeLMj1QEHMdXNZkKNdHDD0990k7gn"
-export RootToken="d8424ab0-7c38-7ac9-5c4c-5f9a52e21007"
-export VAULT_ADDR='https://127.0.0.1:8200'
