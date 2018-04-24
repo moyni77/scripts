@@ -6,8 +6,6 @@ source MYCA.RC
 vault_url="${INTCA_ENDPOINT}"
 vault_token="${token:-d8424ab0-7c38-7ac9-5c4c-5f9a52e21007}"
 
-echo ${vault_token}
-
 ca_crt="$(mktemp)".ca.pem
 result_json="$(mktemp)".result.json
 csr_json="$(mktemp)".csr.json
@@ -41,8 +39,7 @@ cat ${result_json} | jq -r .data.certificate  >${client_name}-cert.pem
 tar --remove-files -cvf ${dest_dir}/bundle-${client_name}.tar  \
     ${client_name}-key.pem \
     ${client_name}-cert.pem \
-    ${client_name}-cachain.pem \
-    ${result_json} 
+    ${client_name}-cachain.pem 
 
 
-echo Bundle in ${dest_dir}/bundle-${client_name}.tar
+echo Bundle in ${dest_dir}/bundle-client-${client_name}.tar

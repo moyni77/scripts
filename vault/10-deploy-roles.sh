@@ -1,6 +1,8 @@
 #
 # Create the various roles needed when requesting certificates
 #
+#
+#
 source MYCA.RC
 
 #
@@ -29,8 +31,10 @@ vault write ${INTCA}/roles/client \
      organization="HPE"
 
 vault policy-write ${R_GET_CERT} - <<EOF
-path "${INTCA}/*" {
+path "${INTCA}/issue/client" {
+   policy = "write"
+}
+path "${INTCA}/issue/server" {
    policy = "write"
 }
 EOF
-
