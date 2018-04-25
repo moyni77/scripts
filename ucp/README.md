@@ -59,7 +59,7 @@ oug0yq6n7d8jui2frs28d8d58 clh-ucp02.cloudra.local      Ready  Active       Reach
 ```
 
 INSTALL the ca.pem file in the trusted CA certificates store.
-(see man pages update-ca-trusts on red Hat Systems)
+(see man the page for update-ca-trust on red Hat Systems)
 
 ## Add a user to UCP
 ```
