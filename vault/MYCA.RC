@@ -1,16 +1,23 @@
+
+#
+# MY CA Root details
+#
+ROOTCA="rootca"
+years=10
+ROOTCA_TTL=$((24*365*${years}))h
+ROOTCA_DESC="Example Root CA"
+ROOTCA_ENDPOINT=http://localhost:8200/v1/${ROOTCA}
+
 #
 # MY CA Intermediate details
 #
-INTCA="ovpnca"
+INTCA="intca"
 years=3
 INTCA_TTL="$((24*365*${years}))h"
-INTCA_DESC="Christophe Lehy Intermediate CA  on Azure (ovpn) valid ${years} years"
-INTCA_ENDPOINT=https://fip-ovpn.westeurope.cloudapp.azure.com:8200/v1/${INTCA}
+INTCA_DESC="Intermediate CA valid ${years} years"
+INTCA_ENDPOINT=http://localhost:8200/v1/${INTCA}
 
 #
 # Roles
 #
-
-# This policy can create server and client certificates
 R_GET_CERT=get-certs
-

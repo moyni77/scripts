@@ -1,0 +1,4 @@
+vault/*.pem
+vault/*.json
+vault/*.crt
+vault/unseal.rc
