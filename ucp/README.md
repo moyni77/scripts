@@ -1,5 +1,8 @@
 # Automate some repetitive tasks related to Docker
 
+## prerequisites
+install jq on your box (see https://stedolan.github.io/jq/download/)
+
 ## Configure the scripts
 
 ```
@@ -54,6 +57,9 @@ hge7jeqmuvtg87ewyz2v97fmf   clh-ucp01.cloudra.local    Ready  Active       Leade
 io72n13tqbkb7dd72b0zuvupx * clh-ucp03.cloudra.local    Ready  Active       Reachable
 oug0yq6n7d8jui2frs28d8d58 clh-ucp02.cloudra.local      Ready  Active       Reachable
 ```
+
+INSTALL the ca.pem file in the trusted CA certificates store.
+(see man the page for update-ca-trust on red Hat Systems)
 
 ## Add a user to UCP
 ```
