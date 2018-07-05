@@ -1,0 +1,25 @@
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+  name: nfs
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+  labels:
+    kubernetes.io/cluster-service: "true"
+provisioner: kubernetes.io/nfs
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  nfs:
+    path: /nfs/nfsvol1
+    server: clh-nfs.cloudra.local
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs

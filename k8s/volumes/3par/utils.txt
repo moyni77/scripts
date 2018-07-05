@@ -1,0 +1,6 @@
+ansible -i hosts all -m shell -a 'docker stop $(docker ps -a | awk "/-hpedockerplugin/ { print \$1 }") '
+ansible -i hosts all -m shell -a 'docker rm $(docker ps -a | awk "/-hpedockerplugin/ { print \$1 }") '
+ansible -i hosts all -m shell -a 'rm -rf /run/docker/plugins/hpe'
+ansible -i hosts all -m shell -a 'rm /run/docker/plugins/hpe.sock.lock
+ansible -i hosts all -m shell -a 'rm /run/docker/plugins/hpe.sock
+
