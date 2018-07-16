@@ -7,14 +7,13 @@
       "Kubernetes Persistent Volume Delete": [],
       "Kubernetes Persistent Volume Get": [],
       "Kubernetes Persistent Volume List": [],
-      "Kubernetes Persistent Volume Patch": [],
+      "Kubernetes Persistent Volume Patch": []
     },
     "Kubernetes Persistent Volume Claim": {
       "Kubernetes Persistent Volume Claim Get": [],
       "Kubernetes Persistent Volume Claim List": [],
       "Kubernetes Persistent Volume Claim Update": [],
       "Kubernetes Persistent Volume Claim Watch": []
-    },
     },
     "Kubernetes Storage Class": {
       "Kubernetes Storage Class Create": [],
