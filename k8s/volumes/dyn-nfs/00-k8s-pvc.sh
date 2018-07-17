@@ -5,7 +5,7 @@ pv_file=/tmp/pv.yml
 pvc_file=/tmp/pvc.yml
 class_file=/tmp/class.yml
 
-techno=$techno envsubst <./class.tpl >${class_file}
+provisioner_name=$provisioner_name techno=$techno envsubst <./class.tpl >${class_file}
 kubectl apply -f ${class_file}
 
 

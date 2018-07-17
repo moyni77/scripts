@@ -1,0 +1,1 @@
+curl -X PUT "https://clh-ucp.cloudra.local/collectionGrants/system%3Aserviceaccount%3Adefault%3Anfs-provisioner/kubernetesnamespaces/$roleid?type=grantobject" -H  "accept: application/json" -H  "Authorization: Bearer b4853c6a-4dad-4470-9f0f-9935c8578f34"

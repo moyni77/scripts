@@ -1,13 +1,14 @@
+curl -X POST "https://clh-ucp.cloudra.local/roles" -H  "accept: application/json" -H  "Authorization: Bearer b4853c6a-4dad-4470-9f0f-9935c8578f34" -H  "content-type: application/json" -d @- <<EOF
 {
-  "name": "Test Role",
-  "system_role": true,
+  "name": "nfs-provisionner-runner",
   "operations": {
     "Kubernetes Persistent Volume": {
       "Kubernetes Persistent Volume Create": [],
       "Kubernetes Persistent Volume Delete": [],
       "Kubernetes Persistent Volume Get": [],
       "Kubernetes Persistent Volume List": [],
-      "Kubernetes Persistent Volume Patch": []
+      "Kubernetes Persistent Volume Patch": [],
+      "Kubernetes Persistent Volume Watch": []
     },
     "Kubernetes Persistent Volume Claim": {
       "Kubernetes Persistent Volume Claim Get": [],
@@ -97,4 +98,4 @@
     }
   }
 }
-
+EOF
