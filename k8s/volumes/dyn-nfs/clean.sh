@@ -39,3 +39,7 @@ do
 #  kubectl get pv $techno-pv$i  2>/dev/null && kubectl delete pv $techno-pv$i
 done
 
+#
+# delete the storage class
+#
+kubectl delete sc ${techno}
