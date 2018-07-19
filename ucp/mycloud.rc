@@ -1,4 +1,4 @@
-CLOUD=${CLOUD:-clh}
+CLOUD=${CLOUD:-xxx}
 UCP_IP="$CLOUD-ucp.cloudra.local"
 UCP_ADMIN="admin"
 UCP_PASSWORD="Just4m3hp"

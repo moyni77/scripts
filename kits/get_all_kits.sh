@@ -27,3 +27,8 @@ SPLUNK_BUILD=fa31da744b51
 SPLUNK_FILENAME=splunkforwarder-${SPLUNK_VERSION}-${SPLUNK_BUILD}-Linux-x86_64.tgz
 wget https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME}
 
+#
+# kubectl
+#
+version=v1.11.1
+wget -O kubectl.v1.11.1  https://storage.googleapis.com/kubernetes-release/release/${version}/bin/linux/amd64/kubectl
