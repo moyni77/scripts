@@ -13,7 +13,7 @@ case "$what" in
     cont=$(docker ps | awk '/talkingjay/ {print $1}')
     if [ "$cont" == "" ]
     then
-      docker run -d  --name talkingjay alpine sh -c 'while [ 1 == 1 ] ; do echo jaybird talking ; sleep 3 ; done'
+      docker run -d  -e constraint:ostype==linux --name talkingjay alpine sh -c 'while [ 1 == 1 ] ; do echo jaybird talking ; sleep 3 ; done'
       cont=$(docker ps | awk '/talkingjay/ { print $NF }')
       echo "bird now talking on ${cont}"
     else

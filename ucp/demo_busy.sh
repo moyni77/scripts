@@ -13,7 +13,7 @@ case "$what" in
     cont=$(docker ps | awk '/busybee/ {print $1}')
     if [ "$cont" == "" ]
     then
-      docker run -d  --name busybee alpine sh -c 'while [ 1 == 1 ] ; do : ; done'
+      docker run -d  -e constraint:ostype==linux --name busybee alpine sh -c 'while [ 1 == 1 ] ; do : ; done'
       cont=$(docker ps | awk '/busybee/ { print $NF }')
       echo "Bee busy on ${cont}"
 
