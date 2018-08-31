@@ -27,8 +27,20 @@ SPLUNK_BUILD=fa31da744b51
 SPLUNK_FILENAME=splunkforwarder-${SPLUNK_VERSION}-${SPLUNK_BUILD}-Linux-x86_64.tgz
 wget https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME}
 
+SPLUNK_PRODUCT=universalforwarder
+SPLUNK_VERSION=7.1.2
+SPLUNK_BUILD=a0c72a66db66
+SPLUNK_FILENAME=splunkforwarder-${SPLUNK_VERSION}-${SPLUNK_BUILD}-linux-2.6-x86_64.rpm
+wget -O splunkforwarder-${SPLUNK_VERSION}.rpm https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME}
+
+SPLUNK_PRODUCT=universalforwarder
+SPLUNK_VERSION=7.1.2
+SPLUNK_BUILD=a0c72a66db66
+SPLUNK_FILENAME=splunkforwarder-${SPLUNK_VERSION}-${SPLUNK_BUILD}-x64-release.msi
+wget -O splunkforwarder-${SPLUNK_VERSION}.msi https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/windows/${SPLUNK_FILENAME}
+
 #
 # kubectl
 #
 version=v1.11.1
-wget -O kubectl.v1.11.1  https://storage.googleapis.com/kubernetes-release/release/${version}/bin/linux/amd64/kubectl
+wget -O kubectl.${version} https://storage.googleapis.com/kubernetes-release/release/${version}/bin/linux/amd64/kubectl

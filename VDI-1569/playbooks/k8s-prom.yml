@@ -1,0 +1,126 @@
+###
+# Copyright (2017) Hewlett Packard Enterprise Development LP
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# You may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+###
+---
+- hosts: local
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../group_vars/vars
+    - ../group_vars/vault
+
+  tasks:
+
+    - debug: msg="Starting Playbook k8s-prom.yml"
+#
+# find a UCP VM that works
+#
+    - include_tasks: includes/find_ucp.yml ping_servers="{{ groups.ucp }}"
+    - debug: var=ucp_instance
+      when: _debug is defined
+
+
+#
+# Retrieve and remember a Token for using the UCP API
+#
+    - name: Retrieve a token for the UCP API
+      uri:
+        url: "https://{{ ucp_instance }}.{{ domain_name }}/auth/login"
+        headers:
+          Content-Type: application/json
+        method: POST
+        status_code: 200
+        body_format: json
+        validate_certs: no
+        body: '{"username":"{{ ucp_username }}","password":"{{ ucp_password }}"}'
+        use_proxy: no
+      register: login
+      until: login.status == 200
+      retries: 20
+      delay: 5
+
+    - name: Remember the token
+      set_fact:
+        auth_token:  "{{ login.json.auth_token }}"
+
+#
+# 
+#
+    - name: List all roles
+      uri:
+        url: "https://{{ ucp_instance }}.{{ domain_name }}/roles"
+        headers:
+          Content-Type: application/json
+          Authorization: Bearer {{ auth_token }}
+        method: GET
+        status_code: 200
+        body_format: json
+        validate_certs: no
+        use_proxy: no
+      register: roles
+
+    - set_fact:
+        prom_role: "{{ roles.json | json_query(query) }}"
+      vars:
+        query: "[?name == '{{ prom_provisioner_role }}' ].{id: id, name: name }"
+
+    - fail:
+      when: prom_role | count ==0
+
+    - debug: var=prom_role[0].id
+
+#
+# Copy the kubectl client
+#
+    - name: Copy kubectl client
+      copy:
+         src: ../files/k8s/client/kubectl
+         dest: /tmp/kubectl
+         mode: 0744
+
+    - name: Create Service Account, copy script
+      template:
+        src: ../templates/k8s/prom/serviceaccount.sh.j2
+        dest: /tmp/serviceaccount.sh
+        mode: 0744
+    - name: Create Service Account, run script
+      shell: /tmp/serviceaccount.sh /tmp/kubectl
+
+    - name: Grant the service account with the role
+      uri:
+        url: "https://{{ ucp_instance }}.{{ domain_name }}/collectionGrants/system%3Aserviceaccount%3Adefault%3A{{ item.serviceaccount }}/kubernetesnamespaces/{{ prom_role[0].id }}?type=grantobject"
+        headers:
+          Content-Type: application/json
+          Authorization: Bearer {{ auth_token }}
+        method: PUT
+        status_code: 201
+        body_format: json
+        validate_certs: no
+        use_proxy: no
+      register: roles
+      with_items: "{{ prom_sa }}" 
+
+#
+# deploy Prometheus
+#
+#    - name: Deploy Prometheus - copy script
+#      copy:
+#         src: ../templates/k8s/prom/prom.sh
+#         dest: /tmp/prom.sh
+#         mode: 0744
+#    - name: Deploy Prometheus - run script
+#      shell: /tmp/prom.sh /tmp/kubectl
+

@@ -1,0 +1,19 @@
+rbac:
+  create: false
+serviceAccounts:
+  alertmanager:
+    create: false
+    name: prometheus-alertmanager
+  kubeStateMetrics:
+    create: false
+    name: prometheus-kube-state-metrics
+  nodeExporter:
+    create: false
+    name: prometheus-node-exporter
+  pushgateway:
+    create: false
+    name: prometheus-pushgateway
+  server:
+    create: false
+    name: prometheus-server
+

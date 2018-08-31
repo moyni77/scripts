@@ -1,0 +1,7 @@
+#
+# installer helm
+# lancer la nfs-provisioner
+kubectl patch storageclass nfs -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+#
+helm install stable/prometheus --version 6.7.4 --name prometheus -f prometheus_params.yaml
+helm install --name grafana stable/grafana --version 1.11.6 -f grafana_params.yaml

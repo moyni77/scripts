@@ -1,5 +1,5 @@
-#export ETCDCTL_ENDPOINT="http://clh-ucp01.cloudra.local:2379,http://clh-ucp02.cloudra.local:2379i,http://clh-ucp03.cloudra.local:2379i"
-export ETCDCTL_ENDPOINT="http://clh-ucp01.cloudra.local:23790,http://clh-ucp02.cloudra.local:2379i0,http://clh-ucp03.cloudra.local:2379i0"
+export ETCDCTL_ENDPOINT="http://clh-ucp01.cloudra.local:2379,http://clh-ucp02.cloudra.local:2379,http://clh-ucp03.cloudra.local:2379"
+#export ETCDCTL_ENDPOINT="http://clh-ucp01.cloudra.local:23790,http://clh-ucp02.cloudra.local:23790,http://clh-ucp03.cloudra.local:23790"
 #export ETCDCTL_CA_FILE=~/certs/ca.pem
 #export ETCDCTL_CERT_FILE=~/certs/client.pem
 #export ETCDCTL_KEY_FILE=~/certs/client-key.pem
