@@ -1,16 +1,25 @@
 #
 # installer helm
+# configure kubectl client
+cd ~/scripts/ucp
+./get_bundle.sh
+. mycloud.rc
+cd $CERTS_DIR
+. env.sh
+
 # lancer la nfs-provisioner
 kubectl patch storageclass nfs -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 # Create service accounts
-apply rbac-tiller manigest
-# assign full control role to tiller (manually so far)
+kubectl apply -f rbac-tiller.yaml
 
-# initialize tiller (using the helm client)
-init tiller --service-account=tiller
+# assign full control role to tiller (manually so far)
 
 # Create Serverice accounts and grant them with the Full control role (this is a POC)
 ansible-playbook -i hosts playbooks/k8s-prom.yml
+
+# initialize tiller (using the helm client)
+helm init --service-account=tiller
+
 
 helm install stable/prometheus --version 6.7.4 --name prometheus -f prometheus_params.yaml
 helm install --name grafana stable/grafana --version 1.11.6 -f grafana_params.yaml
