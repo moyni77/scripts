@@ -1,3 +1,8 @@
+#
+# Warning, tested with K8s 1.8 (ie UCP 3.0), manifest hostnames.yaml will nto work with k8s = 1.11 (need to update API)
+#
+
+
 kubectl create ns foo
 kubectl -n foo apply -f service.yaml -f hostnames.yaml -f curlpod.yaml
 kubectl -n foo exec -it curlpod -- sh -c 'curl hostnames'
