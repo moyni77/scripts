@@ -16,7 +16,7 @@ edit the file mycloud.rc for it to reflect your environment
 CLOUD=${CLOUD:-clh}
 UCP_IP="$CLOUD-ucp.cloudra.local"
 UCP_ADMIN="Admin"
-UCP_PASSWORD="Just4m3hp"
+UCP_PASSWORD="xxxxxxx"
 CERTS_DIR=~/certs.$CLOUD
 DTR_IP="$CLOUD-dtr.cloudra.local"
 ```
